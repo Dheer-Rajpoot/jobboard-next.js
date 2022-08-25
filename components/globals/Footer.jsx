@@ -59,7 +59,7 @@ export default function Footer() {
           {footerData.message} <br />
           <a
             href={footerData.callToActionURL}
-            className="text-liftedgreen-700 hover:text-liftedgreen-800"
+            className="text-paletterpurple-700 hover:text-paletterpurple-800"
           >
             {footerData.callToActionMessage} <br />
             <Image

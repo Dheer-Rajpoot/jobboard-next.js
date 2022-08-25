@@ -47,19 +47,19 @@ export default function Header() {
                   {company.careerMessage} at{" "}
                   <a
                     href={company.companyURL}
-                    className="text-gray-900 hover:text-liftedgreen-700"
+                    className="text-gray-900 hover:text-paletterpurple-700"
                   >
                     {company.companyWebsite}
                   </a>{" "}
                 </p>
-                <p className="text-sm  font-normal text-liftedgreen-600">
+                <p className="text-sm  font-normal text-paletterpurple-600">
                   {company.message}
                 </p>
               </div>
               <div className="mt-4 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                 <a
                   href={company.callToActionURL}
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-liftedgreen-800 hover:bg-liftedgreen-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-liftedgreen-500"
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-paletterpurple-800 hover:bg-paletterpurple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paletterpurple-500"
                 >
                   <PhoneIcon
                     className="-ml-1 mr-2 h-5 w-5"
