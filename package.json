@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentstack/live-preview-utils": "^1.1.0",
+    "@contentstack/utils": "^1.1.2",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.4",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
+    "contentstack": "^3.15.3",
+    "date-and-time": "^2.4.1",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",

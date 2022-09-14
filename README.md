@@ -68,3 +68,7 @@ yarn add -D @tailwindcss/typography
 ```bash
 yarn add react-icons --save
 ```
+
+```bash
+yarn add @contentstack/cli
+```
