@@ -5,8 +5,8 @@ import {
   getCompany,
 } from "../../datalayer";
 
-function CompanyDetailsPage({ company, jobs }) {
-  return <CompanyDetails company={company} jobs={jobs} />;
+function CompanyDetailsPage({ company, companyJobs }) {
+  return <CompanyDetails company={company} companyJobs={companyJobs} />;
 }
 
 export default CompanyDetailsPage;
@@ -26,11 +26,11 @@ export const getStaticProps = async (ctx) => {
   const { params } = ctx;
   const { companyUrl } = params;
   const company = await getCompany(`/${companyUrl}`);
-  const jobs = await getAllJobsByCompany(company.uid);
+  const companyJobs = await getAllJobsByCompany(company.uid);
   return {
     props: {
       company,
-      jobs,
+      companyJobs,
     },
   };
 };
