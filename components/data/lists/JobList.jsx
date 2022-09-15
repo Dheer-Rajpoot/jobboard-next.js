@@ -1,16 +1,11 @@
 import JobCard from "../cards/JobCard";
 function JobList({ jobs }) {
-  console.log(jobs);
   return (
-    <>
+    <div>
       {jobs.map((job) => {
-        return (
-          <div key={job.uid}>
-            <JobCard job={job} />
-          </div>
-        );
+        return <JobCard job={job} key={job.uid} />;
       })}
-    </>
+    </div>
   );
 }
 

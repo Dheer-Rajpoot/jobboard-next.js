@@ -48,12 +48,13 @@ export default {
    * @param {* content-type uid} contentTypeUid
    * @param {* reference field name} referenceFieldPath
    * @param {* Json RTE path} jsonRtePath
-   *
+   * @param {* specific field name} field
    */
-  getEntry({ contentTypeUid, referenceFieldPath, jsonRtePath }) {
+  getEntry({ contentTypeUid, referenceFieldPath, jsonRtePath, field }) {
     return new Promise((resolve, reject) => {
       const query = Stack.ContentType(contentTypeUid).Query();
       if (referenceFieldPath) query.includeReference(referenceFieldPath);
+      if (field) query.only(field);
       query
         .includeOwner()
         .toJSON()
