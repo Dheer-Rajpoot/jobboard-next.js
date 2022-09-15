@@ -19,7 +19,7 @@ const JobCard = ({ job }) => {
               src={job.company[0].logo.url}
               width={100}
               height={100}
-              alt={job.title}
+              alt={job.company[0].title}
             />
           </div>
           <div>

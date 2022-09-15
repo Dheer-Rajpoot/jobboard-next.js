@@ -2,11 +2,7 @@ import JobDetails from "../../components/data/details/JobDetails";
 import { getAllJobsUrl, getJob } from "../../datalayer";
 
 function JobDetailsPage({ job }) {
-  return (
-    <div>
-      <JobDetails job={job} />
-    </div>
-  );
+  return <JobDetails job={job} />;
 }
 
 export default JobDetailsPage;

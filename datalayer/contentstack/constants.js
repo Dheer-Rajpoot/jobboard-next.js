@@ -12,4 +12,7 @@ export const jobReferenceFieldPath = [
   "job_skill",
   "job_type",
   "related_jobs",
+  "related_jobs.company",
+  "related_jobs.job_type",
+  "related_jobs.experience_level",
 ];
