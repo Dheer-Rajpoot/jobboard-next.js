@@ -109,4 +109,40 @@ export default {
       );
     });
   },
+
+  /**
+   *
+   * fetches all the Jobs from specific company
+   * @param {* content-type uid} contentTypeUid
+   * @param {* reference field name} referenceFieldPath
+   * @param {* Json RTE path} jsonRtePath
+   * @param {* specific company uid} uid
+   */
+  getJobsByCompany({ contentTypeUid, referenceFieldPath, jsonRtePath, uid }) {
+    return new Promise((resolve, reject) => {
+      const query = Stack.ContentType(contentTypeUid).Query();
+      if (referenceFieldPath) query.includeReference(referenceFieldPath);
+
+      query
+        .includeOwner()
+        .toJSON()
+        .includeEmbeddedItems()
+        .where("company.uid", uid)
+        .find()
+        .then(
+          (result) => {
+            jsonRtePath &&
+              Utils.jsonToHTML({
+                entry: result,
+                paths: jsonRtePath,
+                renderOption,
+              });
+            resolve(result);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  },
 };

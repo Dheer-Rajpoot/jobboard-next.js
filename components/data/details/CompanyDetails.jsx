@@ -1,5 +1,5 @@
-function CompanyDetails({ company }) {
-  console.log(company);
+function CompanyDetails({ company, jobs }) {
+  console.log(jobs);
   return <div>{company.title}</div>;
 }
 

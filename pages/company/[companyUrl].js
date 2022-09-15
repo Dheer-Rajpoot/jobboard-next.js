@@ -1,8 +1,12 @@
 import CompanyDetails from "../../components/data/details/CompanyDetails";
-import { getAllCompaniesUrl, getCompany } from "../../datalayer";
+import {
+  getAllCompaniesUrl,
+  getAllJobsByCompany,
+  getCompany,
+} from "../../datalayer";
 
-function CompanyDetailsPage({ company }) {
-  return <CompanyDetails company={company} />;
+function CompanyDetailsPage({ company, jobs }) {
+  return <CompanyDetails company={company} jobs={jobs} />;
 }
 
 export default CompanyDetailsPage;
@@ -22,9 +26,11 @@ export const getStaticProps = async (ctx) => {
   const { params } = ctx;
   const { companyUrl } = params;
   const company = await getCompany(`/${companyUrl}`);
+  const jobs = await getAllJobsByCompany(company.uid);
   return {
     props: {
       company,
+      jobs,
     },
   };
 };

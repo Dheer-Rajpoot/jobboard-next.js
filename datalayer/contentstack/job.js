@@ -15,6 +15,19 @@ export const getAllJobs = async () => {
   return jobs;
 };
 
+export const getAllJobsByCompany = async (uid) => {
+  const response = await Stack.getJobsByCompany({
+    contentTypeUid: "job",
+    referenceFieldPath: jobReferenceFieldPath,
+    uid,
+  });
+  const rawJobs = response[0];
+  const jobs = rawJobs.map((rawJob) => {
+    return jobReducer(rawJob);
+  });
+  return jobs;
+};
+
 export const getAllJobsUrl = async () => {
   const response = await Stack.getEntry({
     contentTypeUid: "job",
