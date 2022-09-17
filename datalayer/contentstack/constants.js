@@ -16,3 +16,5 @@ export const jobReferenceFieldPath = [
   "related_jobs.job_type",
   "related_jobs.experience_level",
 ];
+
+export const apiUrl = "api/searchjobs";

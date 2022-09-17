@@ -6,7 +6,6 @@ export const getAllJobs = async () => {
   const response = await Stack.getEntry({
     contentTypeUid: "job",
     referenceFieldPath: jobReferenceFieldPath,
-    jsonRtePath: jobJsonRtePath,
   });
   const rawJobs = response[0];
   const jobs = rawJobs.map((rawJob) => {
@@ -49,4 +48,18 @@ export const getJob = async (entryUrl) => {
 
   const job = jobReducer(response[0]);
   return job;
+};
+
+export const searchJobs = async (searchQuery) => {
+  const response = await Stack.searchJobs({
+    contentTypeUid: "job",
+    referenceFieldPath: jobReferenceFieldPath,
+    remote: searchQuery.remote,
+    feature_job: searchQuery.feature_job,
+  });
+  const rawJobs = response[0];
+  const jobs = rawJobs.map((rawJob) => {
+    return jobReducer(rawJob);
+  });
+  return jobs;
 };

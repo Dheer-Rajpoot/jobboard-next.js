@@ -1,5 +1,5 @@
 import JobCard from "../cards/JobCard";
-function JobList({ jobs }) {
+function JobsList({ jobs }) {
   return (
     <div>
       {jobs.map((job) => {
@@ -9,4 +9,4 @@ function JobList({ jobs }) {
   );
 }
 
-export default JobList;
+export default JobsList;

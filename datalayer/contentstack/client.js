@@ -52,10 +52,10 @@ export default {
    */
   getEntry({ contentTypeUid, referenceFieldPath, jsonRtePath, field }) {
     return new Promise((resolve, reject) => {
-      const query = Stack.ContentType(contentTypeUid).Query();
-      if (referenceFieldPath) query.includeReference(referenceFieldPath);
-      if (field) query.only(field);
-      query
+      const jobQuery = Stack.ContentType(contentTypeUid).Query();
+      if (referenceFieldPath) jobQuery.includeReference(referenceFieldPath);
+      if (field) jobQuery.only(field);
+      jobQuery
         .includeOwner()
         .toJSON()
         .includeEmbeddedItems()
@@ -88,10 +88,10 @@ export default {
    */
   getEntryByUrl({ contentTypeUid, entryUrl, referenceFieldPath, jsonRtePath }) {
     return new Promise((resolve, reject) => {
-      const blogQuery = Stack.ContentType(contentTypeUid).Query();
-      if (referenceFieldPath) blogQuery.includeReference(referenceFieldPath);
-      blogQuery.includeOwner().toJSON();
-      const data = blogQuery.where("url", `${entryUrl}`).find();
+      const jobQuery = Stack.ContentType(contentTypeUid).Query();
+      if (referenceFieldPath) jobQuery.includeReference(referenceFieldPath);
+      jobQuery.includeOwner().toJSON();
+      const data = jobQuery.where("url", `${entryUrl}`).find();
       data.then(
         (result) => {
           jsonRtePath &&
@@ -120,10 +120,10 @@ export default {
    */
   getJobsByCompany({ contentTypeUid, referenceFieldPath, jsonRtePath, uid }) {
     return new Promise((resolve, reject) => {
-      const query = Stack.ContentType(contentTypeUid).Query();
-      if (referenceFieldPath) query.includeReference(referenceFieldPath);
+      const jobQuery = Stack.ContentType(contentTypeUid).Query();
+      if (referenceFieldPath) jobQuery.includeReference(referenceFieldPath);
 
-      query
+      jobQuery
         .includeOwner()
         .toJSON()
         .includeEmbeddedItems()
@@ -143,6 +143,49 @@ export default {
             reject(error);
           }
         );
+    });
+  },
+
+  /**
+   *
+   * search Jobs based on filters
+   * @param {* content-type uid} contentTypeUid
+   * @param {* reference field name} referenceFieldPath
+   * @param {* Json RTE path} jsonRtePath
+   * @param {* remote } remote
+   * @param {* feature_job, } feature_job,
+
+   */
+  searchJobs({
+    contentTypeUid,
+    referenceFieldPath,
+    jsonRtePath,
+    remote,
+    feature_job,
+  }) {
+    return new Promise((resolve, reject) => {
+      const jobQuery = Stack.ContentType(contentTypeUid).Query();
+      if (referenceFieldPath) jobQuery.includeReference(referenceFieldPath);
+
+      if (remote) jobQuery.where("remote", remote);
+      if (feature_job) jobQuery.where("feature_job", feature_job);
+      jobQuery.includeOwner().toJSON();
+      const data = jobQuery.find();
+      data.then(
+        (result) => {
+          jsonRtePath &&
+            Utils.jsonToHTML({
+              entry: result,
+              paths: jsonRtePath,
+              renderOption,
+            });
+          resolve(result);
+        },
+        (error) => {
+          console.error(error);
+          reject(error);
+        }
+      );
     });
   },
 };

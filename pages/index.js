@@ -1,7 +1,7 @@
-import JobList from "../components/data/lists/JobList";
 import { getAllJobs } from "../datalayer";
+import JobsPage from "../components/ui/JobsPage";
 export default function Index({ jobs }) {
-  return <JobList jobs={jobs} />;
+  return <JobsPage jobs={jobs} />;
 }
 
 export const getStaticProps = async (ctx) => {

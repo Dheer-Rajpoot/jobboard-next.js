@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import JobList from "../lists/JobList";
+import JobsList from "../lists/JobsList";
 
 function groupByArrayOfObjects(xs, f) {
   return xs.reduce(
@@ -107,7 +107,7 @@ const CompanyDetails = ({ company, companyJobs }) => {
                         {job_category}
                       </h4>
                       {/* Job category list */}
-                      <JobList jobs={jobs} />
+                      <JobsList jobs={jobs} />
                     </div>
                   );
                 })}
