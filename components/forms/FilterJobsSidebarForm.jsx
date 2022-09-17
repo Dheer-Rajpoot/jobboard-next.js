@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Switch } from "@headlessui/react";
+import SkillsFilterForm from "./SkillsFilterForm";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -11,6 +12,7 @@ function FilterJobsSidebarForm({
   setDisplayedJobs,
   jobTypes,
   experienceLevels,
+  jobSkills,
 }) {
   const jobTypesOptions = jobTypes.map((jobType) => {
     return { value: `${jobType.uid}`, display: `${jobType.title}` };
@@ -58,7 +60,6 @@ function FilterJobsSidebarForm({
   };
 
   const handleJobTypeSelect = (e, option) => {
-   
     if (e.target.checked) {
       setSideBarFormState((prevState) => {
         const job_type = [...prevState.job_type];
@@ -76,7 +77,6 @@ function FilterJobsSidebarForm({
   };
 
   const handleExperienceLevelsSelect = (e, option) => {
-    
     if (e.target.checked) {
       setSideBarFormState((prevState) => {
         const experience_level = [...prevState.experience_level];
@@ -96,7 +96,6 @@ function FilterJobsSidebarForm({
   };
 
   const handleBaseSalaryRangesSelect = (e, option, bounds) => {
-   
     if (e.target.checked) {
       setSideBarFormState((prevState) => {
         const baseSalaryOptions = [...prevState.baseSalaryOptions];
@@ -111,7 +110,7 @@ function FilterJobsSidebarForm({
           baseSalaryOptions,
           baseSalaryBounds,
         };
-        
+
         return newFormState;
       });
     } else {
@@ -126,7 +125,6 @@ function FilterJobsSidebarForm({
           ),
         };
 
-        
         return newFormState;
       });
     }
@@ -137,6 +135,13 @@ function FilterJobsSidebarForm({
       {/* White box */}
       <div className="bg-white shadow-lg rounded-sm border border-slate-200 p-5">
         <div className="grid md:grid-cols-2 xl:grid-cols-1 gap-6">
+          {/* Group 0*/}
+          <SkillsFilterForm
+            jobSkills={jobSkills}
+            selectedSkills={sideBarFormState.job_skill}
+            setSideBarFormState={setSideBarFormState}
+          />
+
           {/* Group 1 */}
           <Switch.Group as="div" className="flex items-center">
             <Switch
