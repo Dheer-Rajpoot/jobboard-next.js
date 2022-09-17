@@ -8,22 +8,6 @@ import { apiUrl } from "../../datalayer/contentstack/constants";
 function JobsPage({ jobs, jobTypes, experienceLevels }) {
   console.log("JOBS ARE", jobs);
 
-  let jobsCountMessage;
-  switch (jobs.length) {
-    case 0: {
-      jobsCountMessage = "No Jobs found.";
-      break;
-    }
-    case 1: {
-      jobsCountMessage = "One Job found.";
-      break;
-    }
-    default: {
-      jobsCountMessage = `Found ${jobs.length} Jobs.`;
-      break;
-    }
-  }
-
   const [sidebarFormState, setSidebarFormState] = useState({
     job_type: [],
     experience_level: [],
@@ -67,6 +51,22 @@ function JobsPage({ jobs, jobTypes, experienceLevels }) {
       console.log("Search form state is changed");
     }
   }, [searchFormState]);
+
+  let jobsCountMessage;
+  switch (displayedJobs.length) {
+    case 0: {
+      jobsCountMessage = "No Jobs found.";
+      break;
+    }
+    case 1: {
+      jobsCountMessage = "One Job found.";
+      break;
+    }
+    default: {
+      jobsCountMessage = `Found ${displayedJobs.length} Jobs.`;
+      break;
+    }
+  }
 
   return (
     <div className="flex flex-col space-y-10 sm:flex-row sm:space-x-6 sm:space-y-0 md:flex-col md:space-x-0 md:space-y-10 xl:flex-row xl:space-x-6 xl:space-y-0 mt-9">
