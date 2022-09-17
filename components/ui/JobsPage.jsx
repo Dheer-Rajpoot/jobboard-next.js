@@ -5,7 +5,9 @@ import SortJobsForm from "../forms/SortJobsForm";
 import FilterJobsSidebarForm from "../forms/FilterJobsSidebarForm";
 import { apiUrl } from "../../datalayer/contentstack/constants";
 
-function JobsPage({ jobs }) {
+function JobsPage({ jobs, jobTypes, experienceLevels }) {
+  console.log("JOBS ARE", jobs);
+
   let jobsCountMessage;
   switch (jobs.length) {
     case 0: {
@@ -23,8 +25,8 @@ function JobsPage({ jobs }) {
   }
 
   const [sidebarFormState, setSidebarFormState] = useState({
-    jobTypes: [],
-    experienceLevels: [],
+    job_type: [],
+    experience_level: [],
     remote: false,
     featured_job: false,
     baseSalaryOptions: [],
@@ -69,6 +71,8 @@ function JobsPage({ jobs }) {
   return (
     <div className="flex flex-col space-y-10 sm:flex-row sm:space-x-6 sm:space-y-0 md:flex-col md:space-x-0 md:space-y-10 xl:flex-row xl:space-x-6 xl:space-y-0 mt-9">
       <FilterJobsSidebarForm
+        jobTypes={jobTypes}
+        experienceLevels={experienceLevels}
         sideBarFormState={sidebarFormState}
         setSideBarFormState={setSidebarFormState}
         setDisplayedJobs={setDisplayedJobs}
@@ -81,7 +85,7 @@ function JobsPage({ jobs }) {
         />
         {jobsCountMessage}
         <SortJobsForm jobs={jobs} setDisplayedJobs={setDisplayedJobs} />
-        <JobsList jobs={displayedJobs} />;
+        <JobsList jobs={displayedJobs} />
       </div>
     </div>
   );

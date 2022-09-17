@@ -153,8 +153,11 @@ export default {
    * @param {* reference field name} referenceFieldPath
    * @param {* Json RTE path} jsonRtePath
    * @param {* remote } remote
-   * @param {* feature_job, } feature_job,
-
+   * @param {* feature_job, } feature_job
+   * @param {* minBaseAnnualSalary, } minBaseAnnualSalary
+   * @param {* maxBaseAnnualSalary, } maxBaseAnnualSalary
+   * @param {* job_type, } job_type
+   * @param {* experience_level, } experience_level
    */
   searchJobs({
     contentTypeUid,
@@ -162,6 +165,10 @@ export default {
     jsonRtePath,
     remote,
     feature_job,
+    minBaseAnnualSalary,
+    maxBaseAnnualSalary,
+    job_type,
+    experience_level,
   }) {
     return new Promise((resolve, reject) => {
       const jobQuery = Stack.ContentType(contentTypeUid).Query();
@@ -169,6 +176,22 @@ export default {
 
       if (remote) jobQuery.where("remote", remote);
       if (feature_job) jobQuery.where("feature_job", feature_job);
+
+      // Base Salary Range Filter
+      let salaryQuery1 = Stack.ContentType(contentTypeUid)
+        .Query()
+        .lessThanOrEqualTo("base_annual_salary", maxBaseAnnualSalary);
+      let salaryQuery2 = Stack.ContentType(contentTypeUid)
+        .Query()
+        .greaterThanOrEqualTo("base_annual_salary", minBaseAnnualSalary);
+      jobQuery.and(salaryQuery1, salaryQuery2);
+
+      //Job Types and Experience Level Filter
+      if (job_type && job_type.length > 0)
+        jobQuery.containedIn("job_type.uid", job_type);
+      if (experience_level && experience_level.length > 0)
+        jobQuery.containedIn("experience_level.uid", experience_level);
+
       jobQuery.includeOwner().toJSON();
       const data = jobQuery.find();
       data.then(

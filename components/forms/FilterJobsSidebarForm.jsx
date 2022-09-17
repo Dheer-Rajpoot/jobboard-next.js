@@ -9,20 +9,19 @@ function FilterJobsSidebarForm({
   sideBarFormState,
   setSideBarFormState,
   setDisplayedJobs,
+  jobTypes,
+  experienceLevels,
 }) {
-  const jobTypesOptions = [
-    { value: "full-time", display: "Full Time" },
-    { value: "part-time", display: "Part Time" },
-    { value: "internship", display: "Internship" },
-    { value: "contract", display: "Contract" },
-  ];
+  const jobTypesOptions = jobTypes.map((jobType) => {
+    return { value: `${jobType.uid}`, display: `${jobType.title}` };
+  });
 
-  const experienceLevelsOptions = [
-    { value: "junior", display: "Junior" },
-    { value: "medior", display: "Medior" },
-    { value: "senior", display: "Senior" },
-    { value: "tech-lead", display: "Tech Lead" },
-  ];
+  const experienceLevelsOptions = experienceLevels.map((experienceLevel) => {
+    return {
+      value: `${experienceLevel.uid}`,
+      display: `${experienceLevel.title}`,
+    };
+  });
 
   const baseSalaryRangesOptions = [
     { value: "<20K", display: "< £20K", bounds: { min: 0, max: 20000 } },
@@ -44,7 +43,6 @@ function FilterJobsSidebarForm({
   ];
 
   const handleRemoteOkChange = (checked) => {
-    console.log(checked);
     //TODO: send request and filter jobs
 
     setSideBarFormState((prevState) => {
@@ -53,7 +51,6 @@ function FilterJobsSidebarForm({
   };
 
   const handleFeaturedJobsOnlyChange = (checked) => {
-    console.log(checked);
     //TODO: send request and filter jobs
     setSideBarFormState((prevState) => {
       return { ...prevState, feature_job: !prevState.feature_job };
@@ -61,36 +58,36 @@ function FilterJobsSidebarForm({
   };
 
   const handleJobTypeSelect = (e, option) => {
-    console.log(e.target.checked, option);
+   
     if (e.target.checked) {
       setSideBarFormState((prevState) => {
-        const jobTypes = [...prevState.jobTypes];
-        jobTypes.push(option);
-        return { ...prevState, jobTypes };
+        const job_type = [...prevState.job_type];
+        job_type.push(option);
+        return { ...prevState, job_type: job_type };
       });
     } else {
       setSideBarFormState((prevState) => {
         return {
           ...prevState,
-          jobTypes: prevState.jobTypes.filter((jobType) => option != jobType),
+          job_type: prevState.job_type.filter((jobType) => option != jobType),
         };
       });
     }
   };
 
   const handleExperienceLevelsSelect = (e, option) => {
-    console.log(e.target.checked, option);
+    
     if (e.target.checked) {
       setSideBarFormState((prevState) => {
-        const experienceLevels = [...prevState.experienceLevels];
-        experienceLevels.push(option);
-        return { ...prevState, experienceLevels };
+        const experience_level = [...prevState.experience_level];
+        experience_level.push(option);
+        return { ...prevState, experience_level: experience_level };
       });
     } else {
       setSideBarFormState((prevState) => {
         return {
           ...prevState,
-          experienceLevels: prevState.experienceLevels.filter(
+          experience_level: prevState.experience_level.filter(
             (experienceLevel) => option != experienceLevel
           ),
         };
@@ -99,7 +96,7 @@ function FilterJobsSidebarForm({
   };
 
   const handleBaseSalaryRangesSelect = (e, option, bounds) => {
-    console.log(e.target.checked, option, bounds);
+   
     if (e.target.checked) {
       setSideBarFormState((prevState) => {
         const baseSalaryOptions = [...prevState.baseSalaryOptions];
@@ -114,7 +111,7 @@ function FilterJobsSidebarForm({
           baseSalaryOptions,
           baseSalaryBounds,
         };
-        console.log(newFormState);
+        
         return newFormState;
       });
     } else {
@@ -129,7 +126,7 @@ function FilterJobsSidebarForm({
           ),
         };
 
-        console.log(newFormState);
+        
         return newFormState;
       });
     }
@@ -206,7 +203,7 @@ function FilterJobsSidebarForm({
                         type="checkbox"
                         className="form-checkbox"
                         onChange={(e) => handleJobTypeSelect(e, option.value)}
-                        checked={sideBarFormState.jobTypes.includes(
+                        checked={sideBarFormState.job_type.includes(
                           option.value
                         )}
                       />
@@ -236,7 +233,7 @@ function FilterJobsSidebarForm({
                         onChange={(e) =>
                           handleExperienceLevelsSelect(e, option.value)
                         }
-                        checked={sideBarFormState.experienceLevels.includes(
+                        checked={sideBarFormState.experience_level.includes(
                           option.value
                         )}
                       />

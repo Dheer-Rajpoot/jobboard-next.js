@@ -1,10 +1,14 @@
 import Stack from "./client";
 import { jobReducer } from "./utils";
-import { jobJsonRtePath, jobReferenceFieldPath } from "./constants";
+import {
+  jobJsonRtePath,
+  jobReferenceFieldPath,
+  jobContentTypeUid,
+} from "./constants";
 
 export const getAllJobs = async () => {
   const response = await Stack.getEntry({
-    contentTypeUid: "job",
+    contentTypeUid: jobContentTypeUid,
     referenceFieldPath: jobReferenceFieldPath,
   });
   const rawJobs = response[0];
@@ -16,7 +20,7 @@ export const getAllJobs = async () => {
 
 export const getAllJobsByCompany = async (uid) => {
   const response = await Stack.getJobsByCompany({
-    contentTypeUid: "job",
+    contentTypeUid: jobContentTypeUid,
     referenceFieldPath: jobReferenceFieldPath,
     uid,
   });
@@ -29,7 +33,7 @@ export const getAllJobsByCompany = async (uid) => {
 
 export const getAllJobsUrl = async () => {
   const response = await Stack.getEntry({
-    contentTypeUid: "job",
+    contentTypeUid: jobContentTypeUid,
     field: "url",
   });
   const urls = response[0].map((job) => {
@@ -40,7 +44,7 @@ export const getAllJobsUrl = async () => {
 
 export const getJob = async (entryUrl) => {
   const response = await Stack.getEntryByUrl({
-    contentTypeUid: "job",
+    contentTypeUid: jobContentTypeUid,
     entryUrl,
     referenceFieldPath: jobReferenceFieldPath,
     jsonRtePath: jobJsonRtePath,
@@ -51,11 +55,16 @@ export const getJob = async (entryUrl) => {
 };
 
 export const searchJobs = async (searchQuery) => {
+  console.log("SEARCH QUERY PARAMS ARE", searchQuery);
   const response = await Stack.searchJobs({
-    contentTypeUid: "job",
+    contentTypeUid: jobContentTypeUid,
     referenceFieldPath: jobReferenceFieldPath,
     remote: searchQuery.remote,
     feature_job: searchQuery.feature_job,
+    minBaseAnnualSalary: searchQuery.minBaseAnnualSalary,
+    maxBaseAnnualSalary: searchQuery.maxBaseAnnualSalary,
+    job_type: searchQuery.job_type,
+    experience_level: searchQuery.experience_level,
   });
   const rawJobs = response[0];
   const jobs = rawJobs.map((rawJob) => {

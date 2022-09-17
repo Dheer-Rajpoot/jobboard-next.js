@@ -18,3 +18,12 @@ export const jobReferenceFieldPath = [
 ];
 
 export const apiUrl = "api/searchjobs";
+
+/**
+ * Content Type Uid
+ */
+
+export const jobContentTypeUid = "job";
+export const jobTypeContentTypeUid = "job_type";
+export const companyContentTypeUid = "company";
+export const experienceLevelContentTypeUid = "experience_level";

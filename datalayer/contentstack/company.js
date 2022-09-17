@@ -1,17 +1,9 @@
 import Stack from "./client";
-
-export const getAllCompanies = async () => {
-  const response = await Stack.getEntry({
-    contentTypeUid: "company",
-    referenceFieldPath: undefined,
-    jsonRtePath: undefined,
-  });
-  return response[0];
-};
+import { companyContentTypeUid } from "./constants";
 
 export const getAllCompaniesUrl = async () => {
   const response = await Stack.getEntry({
-    contentTypeUid: "company",
+    contentTypeUid: companyContentTypeUid,
     field: "url",
   });
   const urls = response[0].map((company) => {
@@ -22,7 +14,7 @@ export const getAllCompaniesUrl = async () => {
 
 export const getCompany = async (entryUrl) => {
   const response = await Stack.getEntryByUrl({
-    contentTypeUid: "company",
+    contentTypeUid: companyContentTypeUid,
     entryUrl,
   });
   return response[0];

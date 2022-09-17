@@ -1,14 +1,10 @@
 /**
  * Company
  */
-export {
-  getAllCompanies,
-  getAllCompaniesUrl,
-  getCompany,
-} from "./contentstack/company";
+export { getAllCompaniesUrl, getCompany } from "./contentstack/company";
 
 /**
- * JOB
+ * Job
  */
 export {
   getAllJobs,
@@ -17,3 +13,12 @@ export {
   getAllJobsByCompany,
   searchJobs,
 } from "./contentstack/job";
+
+/**
+ * Job Type
+ */
+export { getAllJobTypes } from "./contentstack/jobType";
+/**
+ * Experience Level
+ */
+export { getAllExperienceLevels } from "./contentstack/experienceLevel";
