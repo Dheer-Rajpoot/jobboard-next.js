@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { xl } from "@tailwindcss/typography/src/styles";
 import { searchJobs } from "../../datalayer";
 export default async function handler(req, res) {
   const { searchFormState, sidebarFormState } = req.body;
@@ -13,11 +14,16 @@ export default async function handler(req, res) {
       ? Math.max(...sidebarFormState.baseSalaryBounds)
       : 1000000;
 
+  const job_skill = sidebarFormState.job_skill.map((skill) => {
+    return skill.value;
+  });
+
   const query = {
     ...sidebarFormState,
     searchBarText: searchFormState,
     minBaseAnnualSalary,
     maxBaseAnnualSalary,
+    job_skill,
   };
 
   const jobs = await searchJobs(query);

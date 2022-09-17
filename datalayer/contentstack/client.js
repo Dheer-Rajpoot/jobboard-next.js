@@ -158,6 +158,7 @@ export default {
    * @param {* maxBaseAnnualSalary, } maxBaseAnnualSalary
    * @param {* job_type, } job_type
    * @param {* experience_level, } experience_level
+   * @param {* job_skill, } job_skill
    */
   searchJobs({
     contentTypeUid,
@@ -169,6 +170,7 @@ export default {
     maxBaseAnnualSalary,
     job_type,
     experience_level,
+    job_skill,
   }) {
     return new Promise((resolve, reject) => {
       const jobQuery = Stack.ContentType(contentTypeUid).Query();
@@ -191,6 +193,10 @@ export default {
         jobQuery.containedIn("job_type.uid", job_type);
       if (experience_level && experience_level.length > 0)
         jobQuery.containedIn("experience_level.uid", experience_level);
+
+      // Job Skills Filter
+      if (job_skill && job_skill.length > 0)
+        jobQuery.containedIn("job_skill.uid", job_skill);
 
       jobQuery.includeOwner().toJSON();
       const data = jobQuery.find();

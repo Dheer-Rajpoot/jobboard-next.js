@@ -65,7 +65,9 @@ export const searchJobs = async (searchQuery) => {
     maxBaseAnnualSalary: searchQuery.maxBaseAnnualSalary,
     job_type: searchQuery.job_type,
     experience_level: searchQuery.experience_level,
+    job_skill: searchQuery.job_skill,
   });
+
   const rawJobs = response[0];
   const jobs = rawJobs.map((rawJob) => {
     return jobReducer(rawJob);
