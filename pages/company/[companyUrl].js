@@ -4,8 +4,14 @@ import {
   getAllJobsByCompany,
   getCompany,
 } from "../../datalayer";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import { useRouter } from "next/router";
 
 function CompanyDetailsPage({ company, companyJobs }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <LoadingSpinner loadingMessage="Company Data is loading" />;
+  }
   return <CompanyDetails company={company} companyJobs={companyJobs} />;
 }
 
@@ -19,13 +25,18 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 export const getStaticProps = async (ctx) => {
   const { params } = ctx;
   const { companyUrl } = params;
   const company = await getCompany(`/${companyUrl}`);
+  if (!company) {
+    return {
+      notFound: true,
+    };
+  }
   const companyJobs = await getAllJobsByCompany(company.uid);
   return {
     props: {

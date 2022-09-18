@@ -6,7 +6,7 @@ export const dateReducer = (dateStr) => {
 };
 
 export const jobReducer = (job) => {
-  job.date_posted = dateReducer(job.date_posted);
+  if (job) job.date_posted = dateReducer(job.date_posted);
   return job;
 };
 
