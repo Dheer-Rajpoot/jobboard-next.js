@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Switch } from "@headlessui/react";
 import SkillsFilterForm from "./SkillsFilterForm";
 
@@ -9,7 +9,6 @@ function classNames(...classes) {
 function FilterJobsSidebarForm({
   sideBarFormState,
   setSideBarFormState,
-  setDisplayedJobs,
   jobTypes,
   experienceLevels,
   jobSkills,

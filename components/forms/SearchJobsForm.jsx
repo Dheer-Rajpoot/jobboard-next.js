@@ -1,8 +1,4 @@
-const SearchJobForm = ({
-  searchFormState,
-  setSearchFormState,
-  setDisplayedJobs,
-}) => {
+const SearchJobForm = ({ searchFormState, setSearchFormState }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 

@@ -88,13 +88,11 @@ function JobsPage({ jobs, jobTypes, experienceLevels, jobSkills }) {
         jobSkills={jobSkills}
         sideBarFormState={sidebarFormState}
         setSideBarFormState={setSidebarFormState}
-        setDisplayedJobs={setDisplayedJobs}
       />
       <div className="w-full">
         <SearchJobForm
           searchFormState={searchFormState}
           setSearchFormState={setSearchFormState}
-          setDisplayedJobs={setDisplayedJobs}
         />
         {/* Jobs header */}
         <div className="flex justify-between items-center mb-4">
