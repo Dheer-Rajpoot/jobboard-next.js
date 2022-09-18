@@ -49,7 +49,10 @@ function JobsPage({ jobs, jobTypes, experienceLevels, jobSkills }) {
     if (initialSearchFormRender.current) {
       initialSearchFormRender.current = false;
     } else {
-      console.log("Search form state is changed");
+      if (searchFormState.length >= 3 || searchFormState.length == 0) {
+        const formsStates = { searchFormState, sidebarFormState };
+        searchJobs(apiUrl, formsStates);
+      }
     }
   }, [searchFormState]);
 

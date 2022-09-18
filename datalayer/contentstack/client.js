@@ -159,6 +159,7 @@ export default {
    * @param {* job_type, } job_type
    * @param {* experience_level, } experience_level
    * @param {* job_skill, } job_skill
+   * @param {* searchBarText, } searchBarText
    */
   searchJobs({
     contentTypeUid,
@@ -171,6 +172,7 @@ export default {
     job_type,
     experience_level,
     job_skill,
+    searchBarText,
   }) {
     return new Promise((resolve, reject) => {
       const jobQuery = Stack.ContentType(contentTypeUid).Query();
@@ -197,6 +199,9 @@ export default {
       // Job Skills Filter
       if (job_skill && job_skill.length > 0)
         jobQuery.containedIn("job_skill.uid", job_skill);
+
+      //Searchbar Text Search
+      if (searchBarText) jobQuery.search(searchBarText);
 
       jobQuery.includeOwner().toJSON();
       const data = jobQuery.find();

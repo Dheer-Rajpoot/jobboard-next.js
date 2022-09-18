@@ -59,6 +59,7 @@ export const searchJobs = async (searchQuery) => {
   const response = await Stack.searchJobs({
     contentTypeUid: jobContentTypeUid,
     referenceFieldPath: jobReferenceFieldPath,
+    searchBarText: searchQuery.searchBarText,
     remote: searchQuery.remote,
     feature_job: searchQuery.feature_job,
     minBaseAnnualSalary: searchQuery.minBaseAnnualSalary,
