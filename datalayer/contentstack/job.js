@@ -55,7 +55,6 @@ export const getJob = async (entryUrl) => {
 };
 
 export const searchJobs = async (searchQuery) => {
-  console.log("SEARCH QUERY PARAMS ARE", searchQuery);
   const response = await Stack.searchJobs({
     contentTypeUid: jobContentTypeUid,
     referenceFieldPath: jobReferenceFieldPath,

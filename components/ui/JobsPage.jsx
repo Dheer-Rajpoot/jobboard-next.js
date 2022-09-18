@@ -6,8 +6,6 @@ import FilterJobsSidebarForm from "../forms/FilterJobsSidebarForm";
 import { apiUrl } from "../../datalayer/contentstack/constants";
 
 function JobsPage({ jobs, jobTypes, experienceLevels, jobSkills }) {
-  console.log("JOBS ARE", jobs);
-
   const [sidebarFormState, setSidebarFormState] = useState({
     job_type: [],
     experience_level: [],

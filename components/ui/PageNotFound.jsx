@@ -24,12 +24,11 @@ export default function PageNotFound() {
                     Go back home
                   </a>
                 </Link>
-                <a
-                  href="lifted.site/contact"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-sm text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Contact support
-                </a>
+                <Link href="/">
+                  <a className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-sm text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Contact support
+                  </a>
+                </Link>
               </div>
             </div>
           </main>
