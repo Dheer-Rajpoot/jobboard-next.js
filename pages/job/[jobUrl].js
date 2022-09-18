@@ -26,5 +26,6 @@ export const getStaticProps = async (ctx) => {
     props: {
       job,
     },
+    revalidate: 10,
   };
 };

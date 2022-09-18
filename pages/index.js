@@ -28,5 +28,6 @@ export const getStaticProps = async (ctx) => {
       experienceLevels,
       jobSkills,
     },
+    revalidate: 10,
   };
 };

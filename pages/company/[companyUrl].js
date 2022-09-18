@@ -32,5 +32,6 @@ export const getStaticProps = async (ctx) => {
       company,
       companyJobs,
     },
+    revalidate: 10,
   };
 };
