@@ -2,7 +2,7 @@ import Image from "next/image";
 function Card({ featureSection }) {
   return (
     <>
-      <div className="flex mt-5 p-10 justify-center">
+      <div className="flex p-10 justify-center">
         <h2 className="text-3xl font-normal leading-normal mt-0 mb-2 text-gray-500">
           {featureSection.title}
         </h2>
