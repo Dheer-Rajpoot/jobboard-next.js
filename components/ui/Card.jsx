@@ -27,7 +27,7 @@ function Card({ featureSection }) {
                 <p className="text-gray-700">{card.feature_card_description}</p>
               </div>
               <div className="px-6 pt-4 pb-10">
-                <button className="inline-block bg-green-500 rounded-full px-4 py-1 font-bold text-white">
+                <button className="inline-block bg-paletterpurple-900 rounded-full px-4 py-1 font-bold text-white">
                   {card.button_label}
                 </button>
               </div>

@@ -14,11 +14,11 @@ function Testimonial({ testimonial }) {
           return (
             <div className="grid shadow-lg rounded-xl mx-auto p-4" key={key}>
               <p className="text-gray-600 pb-6">
-                <span className="text-green-500 text-lg font-bold">" </span>
+                <span className="text-paletterpurple-500 text-lg font-bold">" </span>
                 {testimonial.description}
-                <span className="text-green-500 text-lg font-bold"> "</span>
+                <span className="text-paletterpurple-500 text-lg font-bold"> "</span>
               </p>
-              <div className="flex bg-green-100 rounded-full items-center">
+              <div className="flex bg-paletterpurple-100 rounded-full items-center">
                 <a href="#" className="block relative">
                   <Image
                     src="/images/avatar.png"
@@ -29,7 +29,7 @@ function Testimonial({ testimonial }) {
                   />
                 </a>
                 <div className="flex flex-col ml-2 justify-between">
-                  <span className="text-sm text-green-500 font-semibold ">
+                  <span className="text-sm text-paletterpurple-500 font-semibold ">
                     {testimonial.name}
                   </span>
                   <span className="text-xs">{testimonial.designation}</span>

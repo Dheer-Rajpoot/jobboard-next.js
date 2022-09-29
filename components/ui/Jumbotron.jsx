@@ -2,7 +2,10 @@ function Jumbotron({ jumbotron }) {
   return (
     <div
       className="py-20 rounded-md m-2"
-      style={{ background: "linear-gradient(315deg, #D1FAE5 0%, #10B981 74%)" }}
+      style={{
+        background:
+          "linear-gradient(315deg, rgba(220,151,255,1) 0%, rgba(49,0,85,1) 75%)",
+      }}
     >
       <div className="mx-auto px-6">
         <h2 className="text-4xl font-bold mb-2 text-white">

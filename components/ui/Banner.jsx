@@ -4,7 +4,7 @@ function Banner({ banner }) {
       <div className="text-center lg:text-left">
         <h1 className="text-4xl tracking-tight font-extrabold xl:space-x-4 text-gray-900 sm:text-5xl md:text-6xl">
           <span className="block xl:inline">{banner.title_1}</span>
-          <span className="block xl:inline text-green-500">
+          <span className="block xl:inline text-paletterpurple-500">
             {banner.title_2}
           </span>
         </h1>
@@ -15,7 +15,7 @@ function Banner({ banner }) {
           <div className="rounded-md shadow">
             <a
               href="#"
-              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 md:py-4 md:text-lg md:px-10"
+              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-paletterpurple-900 hover:bg-paletterpurple-600 md:py-4 md:text-lg md:px-10"
             >
               {banner.button_1_label}
             </a>
@@ -23,7 +23,7 @@ function Banner({ banner }) {
           <div className="mt-3 sm:mt-0 sm:ml-3">
             <a
               href="#"
-              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-4 md:text-lg md:px-10"
+              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-paletterpurple-700 bg-paletterpurple-100 hover:bg-paletterpurple-200 md:py-4 md:text-lg md:px-10"
             >
               {banner.button_2_label}
             </a>
