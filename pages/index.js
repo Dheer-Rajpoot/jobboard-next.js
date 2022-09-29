@@ -1,33 +1,16 @@
-import {
-  getAllExperienceLevels,
-  getAllJobs,
-  getAllJobSkills,
-  getAllJobTypes,
-} from "../datalayer";
-import JobsPage from "../components/ui/JobsPage";
-export default function Index({ jobs, jobTypes, experienceLevels, jobSkills }) {
+import Banner from "../components/ui/Banner";
+import Card from "../components/ui/Card";
+import Testimonials from "../components/ui/Testimonials";
+import Jumbotron from "../components/ui/Jumbotron";
+function Index() {
   return (
-    <JobsPage
-      jobs={jobs}
-      jobTypes={jobTypes}
-      experienceLevels={experienceLevels}
-      jobSkills={jobSkills}
-    />
+    <>
+      <Banner />
+      <Card />
+      <Testimonials />
+      <Jumbotron />
+    </>
   );
 }
 
-export const getStaticProps = async (ctx) => {
-  const jobs = await getAllJobs();
-  const jobTypes = await getAllJobTypes();
-  const experienceLevels = await getAllExperienceLevels();
-  const jobSkills = await getAllJobSkills();
-  return {
-    props: {
-      jobs,
-      jobTypes,
-      experienceLevels,
-      jobSkills,
-    },
-    revalidate: 10,
-  };
-};
+export default Index;
