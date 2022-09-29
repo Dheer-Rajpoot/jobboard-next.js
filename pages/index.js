@@ -1,16 +1,21 @@
-import Banner from "../components/ui/Banner";
-import Card from "../components/ui/Card";
-import Testimonials from "../components/ui/Testimonials";
-import Jumbotron from "../components/ui/Jumbotron";
-function Index() {
+import { getHomePage } from "../datalayer";
+import RenderComponents from "../components/ui/RenderComponents";
+function Index({ home }) {
   return (
     <>
-      <Banner />
-      <Card />
-      <Testimonials />
-      <Jumbotron />
+      <RenderComponents pageComponents={home.page_components} />
     </>
   );
 }
 
 export default Index;
+
+export const getStaticProps = async (ctx) => {
+  const home = await getHomePage();
+
+  return {
+    props: {
+      home: home[0],
+    },
+  };
+};

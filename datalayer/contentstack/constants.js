@@ -28,3 +28,4 @@ export const jobTypeContentTypeUid = "job_type";
 export const companyContentTypeUid = "company";
 export const experienceLevelContentTypeUid = "experience_level";
 export const jobSkillContentTypeUid = "job_skill";
+export const homePageContentTypeUid = "home_page";

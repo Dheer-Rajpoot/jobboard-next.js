@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import Layout from "../components/globals/Layout";
 import Head from "next/head";
 function MyApp({ Component, pageProps }) {
-  const { company } = pageProps;
+  const { home } = pageProps;
   const metaData = (seo) => {
     const metaArr = [];
     for (const key in seo) {
@@ -33,9 +33,7 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width,initial-scale=1,minimum-scale=1"
         />
         <title>Job Board Next.js Contentstack</title>
-        {company?.seo &&
-          company.seo.enable_search_indexing &&
-          metaData(company.seo)}
+        {home?.seo && home.seo.enable_search_indexing && metaData(home.seo)}
       </Head>
       <Layout>
         <Component {...pageProps} />

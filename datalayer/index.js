@@ -24,3 +24,7 @@ export { getAllExperienceLevels } from "./contentstack/experienceLevel";
  * Job Skill
  */
 export { getAllJobSkills } from "./contentstack/jobSkill";
+/**
+ * Home Page
+ */
+export { getHomePage } from "./contentstack/home";
