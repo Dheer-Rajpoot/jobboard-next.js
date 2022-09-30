@@ -2,6 +2,7 @@ import { BriefcaseIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import GPTWBanner from "../../public/images/programming-banner.webp";
 import GPTWAvatar from "../../public/images/GPTW-Avatar.png";
+import Link from "next/link";
 
 const company = {
   name: "Great Place to Work®",
@@ -57,16 +58,15 @@ export default function Header() {
                 </p>
               </div>
               <div className="mt-4 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <a
-                  href={company.callToActionURL}
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-paletterpurple-800 hover:bg-paletterpurple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paletterpurple-500"
-                >
-                  <BriefcaseIcon
-                    className="-ml-1 mr-2 h-5 w-5"
-                    aria-hidden="true"
-                  />
-                  {company.callToActionMessage}
-                </a>
+                <Link href={company.callToActionURL}>
+                  <a className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-paletterpurple-800 hover:bg-paletterpurple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paletterpurple-500">
+                    <BriefcaseIcon
+                      className="-ml-1 mr-2 h-5 w-5"
+                      aria-hidden="true"
+                    />
+                    {company.callToActionMessage}
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
