@@ -22,7 +22,7 @@ function Testimonial({ testimonial }) {
                   &quot;
                 </span>
               </p>
-              <div className="flex bg-paletterpurple-100 rounded-full items-center">
+              <div className="flex bg-paletterpurple-100 rounded-full items-center mt-auto">
                 <a href="#" className="block relative">
                   <Image
                     src="/images/avatar.png"
