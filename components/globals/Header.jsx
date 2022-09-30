@@ -1,4 +1,4 @@
-import { PhoneIcon } from "@heroicons/react/24/solid";
+import { BriefcaseIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import GPTWBanner from "../../public/images/programming-banner.webp";
 import GPTWAvatar from "../../public/images/GPTW-Avatar.png";
@@ -61,7 +61,7 @@ export default function Header() {
                   href={company.callToActionURL}
                   className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-paletterpurple-800 hover:bg-paletterpurple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paletterpurple-500"
                 >
-                  <PhoneIcon
+                  <BriefcaseIcon
                     className="-ml-1 mr-2 h-5 w-5"
                     aria-hidden="true"
                   />
