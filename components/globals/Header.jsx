@@ -9,8 +9,8 @@ const company = {
   companyURL: "https://www.greatplacetowork.in/about-us/career/",
   companyWebsite: "GPTW",
   message: "The Global Authority on Workplace Culture!",
-  callToActionURL: "https://www.greatplacetowork.in/contact-us/",
-  callToActionMessage: "Contact Us",
+  callToActionURL: "/job",
+  callToActionMessage: "Job Board",
   profileImage: GPTWAvatar,
   coverImage: GPTWBanner,
 };
