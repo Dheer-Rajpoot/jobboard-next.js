@@ -15,12 +15,11 @@ function Testimonial({ testimonial }) {
             <div className="grid shadow-lg rounded-xl mx-auto p-4" key={key}>
               <p className="text-gray-600 pb-6">
                 <span className="text-paletterpurple-500 text-lg font-bold">
-                  "{" "}
+                  &quot;
                 </span>
                 {testimonial.description}
                 <span className="text-paletterpurple-500 text-lg font-bold">
-                  {" "}
-                  "
+                  &quot;
                 </span>
               </p>
               <div className="flex bg-paletterpurple-100 rounded-full items-center">
